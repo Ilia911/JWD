@@ -1,5 +1,5 @@
 # JWD
-For the course Java Web Development
+For the Java Web Development course
 
 Task 1 - work with command line
 
