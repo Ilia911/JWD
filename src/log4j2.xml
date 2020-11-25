@@ -19,7 +19,7 @@
         </File>
 
         <RollingFile name="rollingFile"
-                     fileName="logs/log4j2.log"
+                     fileName="logs/log.txt"
                      filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
@@ -33,10 +33,9 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="by.eriomkin.jwd.logging.MainItem" level="debug"/>
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="Console" level="info"/>
-            <AppenderRef ref="TxtFile" level="debug"/>
+            <AppenderRef ref="TxtFile" level="info"/>
         </Root>
     </Loggers>
 </Configuration>

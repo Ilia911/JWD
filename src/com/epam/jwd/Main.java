@@ -149,9 +149,9 @@ public class Main {
     private Square[] hardcoreArrSquare() {
         Square[] arrSquare = new Square[1];
         Point point1 = new Point(0,0);
-        Point point2 = new Point(2,0);
+        Point point2 = new Point(2,2);
         Point point3 = new Point(0,2);
-        Point point4 = new Point(2, 2);
+        Point point4 = new Point(2, 0);
         arrSquare[0] = new Square(point1, point2, point3, point4);
         return arrSquare;
     }
