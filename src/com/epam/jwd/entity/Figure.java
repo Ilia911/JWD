@@ -5,6 +5,15 @@ import java.util.Arrays;
 public class Figure {
 
     private Point[] arrPoint;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Figure() {};
 

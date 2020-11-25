@@ -91,20 +91,20 @@ public class Main {
         Point point3 = arrPoint[2];
         Point point4 = arrPoint[3];
 
-        if (calculateSqrtLength(point1, point3) == calculateSqrtLength(point2, point4)) {
-            if (calculateSqrtLength(point1, point2) == calculateSqrtLength(point4, point3)) {
+        if (calculateSqareLength(point1, point3) == calculateSqareLength(point2, point4)) {
+            if (calculateSqareLength(point1, point2) == calculateSqareLength(point4, point3)) {
                 return true;
             }
         }
-        if (calculateSqrtLength(point1, point2) == calculateSqrtLength(point3, point4)) {
-            if (calculateSqrtLength(point1, point3) == calculateSqrtLength(point4, point2)) {
+        if (calculateSqareLength(point1, point2) == calculateSqareLength(point3, point4)) {
+            if (calculateSqareLength(point1, point3) == calculateSqareLength(point4, point2)) {
                 return true;
             }
         }
         return false;
 
     }
-    private static int calculateSqrtLength (Point point1, Point point2) {
+    private static int calculateSqareLength(Point point1, Point point2) {
         int x1 = point1.getX();
         int y1 = point1.getY();
         int x2 = point2.getX();
@@ -113,7 +113,7 @@ public class Main {
         return (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1);
     }
 
-    private  static void logarrTriangle(Figure[] arrFigure) {
+    private  static void logArrTriangle(Figure[] arrFigure) {
         for (int i = 0; i < arrFigure.length; i++) {
             LOGGER.log(Level.INFO, "Triangle[{}]:", i);
             logArrPoint(arrFigure[i].getArrPoint());
