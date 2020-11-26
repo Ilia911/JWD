@@ -1,10 +1,14 @@
 package com.epam.jwd.entity;
 
+import com.epam.jwd.strategy.PropertyStrategy;
+import com.epam.jwd.strategy.impl.SquarePropertyStrategy;
+
 import java.util.Arrays;
 
 public class Square extends  Figure{
 
     private Point[] arrPoint = new Point[4];
+    private PropertyStrategy figurePropertyStrategy = SquarePropertyStrategy.INSTANCE;
 
     public Square() {}
 
@@ -14,11 +18,25 @@ public class Square extends  Figure{
         arrPoint[2] = thirdPoint;
         arrPoint[3] = forthPoint;
     }
-    public Square(Point[] arrPoint) {
-        this.arrPoint[0] = arrPoint[0];
-        this.arrPoint[1] = arrPoint[1];
-        this.arrPoint[2] = arrPoint[2];
-        this.arrPoint[3] = arrPoint[3];
+
+    @Override
+    public PropertyStrategy getFigurePropertiesStrategy() {
+        return figurePropertyStrategy;
+    }
+
+    @Override
+    public void setFigurePropertiesStrategy(PropertyStrategy figurePropertiesStrategy) {
+        this.figurePropertyStrategy = figurePropertiesStrategy;
+    }
+
+    @Override
+    public double fetchPerimeter() {
+        return figurePropertyStrategy.calculatePerimeter(arrPoint);
+    }
+
+    @Override
+    public double fetchArea() {
+        return figurePropertyStrategy.calculateArea(arrPoint);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.epam.jwd.strategy;
 
-import by.eriomkin.jwd.entity.Point;
+
+import com.epam.jwd.entity.Point;
 
 public interface PropertyStrategy {
    double calculatePerimeter(Point[] arr);

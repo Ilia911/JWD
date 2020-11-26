@@ -1,10 +1,14 @@
 package com.epam.jwd.entity;
 
+import com.epam.jwd.strategy.PropertyStrategy;
+import com.epam.jwd.strategy.impl.TrianglePropertyStrategy;
+
 import java.util.Arrays;
 
 public class Triangle extends Figure{
 
     private Point[] arrPoint = new Point[3];
+    private PropertyStrategy figurePropertiesStrategy = TrianglePropertyStrategy.getInstance();
 
     public Triangle() {}
 
@@ -13,10 +17,25 @@ public class Triangle extends Figure{
         arrPoint[1] = secondPoint;
         arrPoint[2] = thirdPoint;
     }
-    public Triangle(Point[] arrPoint) {
-        this.arrPoint[0] = arrPoint[0];
-        this.arrPoint[1] = arrPoint[1];
-        this.arrPoint[2] = arrPoint[2];
+
+    @Override
+    public PropertyStrategy getFigurePropertiesStrategy() {
+        return figurePropertiesStrategy;
+    }
+
+    @Override
+    public void setFigurePropertiesStrategy(PropertyStrategy figurePropertiesStrategy) {
+        this.figurePropertiesStrategy = figurePropertiesStrategy;
+    }
+
+    @Override
+    public double fetchPerimeter() {
+        return figurePropertiesStrategy.calculatePerimeter(arrPoint);
+    }
+
+    @Override
+    public double fetchArea() {
+        return figurePropertiesStrategy.calculateArea(arrPoint);
     }
 
     @Override

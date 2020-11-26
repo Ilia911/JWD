@@ -1,19 +1,12 @@
 package com.epam.jwd.strategy.impl;
 
+
 import com.epam.jwd.entity.Point;
 import com.epam.jwd.strategy.PropertyStrategy;
 
-public final class TrianglePropertyStrategy implements PropertyStrategy {
-    private static TrianglePropertyStrategy instance;
+public enum SquarePropertyStrategy implements PropertyStrategy {
+    INSTANCE;
 
-    private TrianglePropertyStrategy(){};
-
-    public static TrianglePropertyStrategy getInstance() {
-        if (instance == null) {
-            instance = new TrianglePropertyStrategy();
-        }
-        return instance;
-    }
     @Override
     public double calculatePerimeter(Point[] arr) {
 
@@ -29,14 +22,9 @@ public final class TrianglePropertyStrategy implements PropertyStrategy {
 
     @Override
     public double calculateArea(Point[] arr) {
-
-        double sideOne = calculeateLengthBetweenTwoPoint(arr[0], arr[1]);
-        double sideTwo = calculeateLengthBetweenTwoPoint(arr[1], arr[2]);
-        double sideThree = calculeateLengthBetweenTwoPoint(arr[0], arr[2]);
-        double perimeterHalf = (sideOne + sideTwo + sideThree) / 3;
-
-        return Math.sqrt(perimeterHalf * (perimeterHalf - sideOne) * (perimeterHalf - sideTwo)
-                * (perimeterHalf - sideThree));
+        double side;
+        side = calculeateLengthBetweenTwoPoint(arr[0], arr[1]);
+        return side * side;
     }
 
     private static double calculeateLengthBetweenTwoPoint(Point p1, Point p2) {

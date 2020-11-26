@@ -17,19 +17,6 @@
         <File name="TxtFile" fileName="logs/log.txt" bufferedIO="true">
             <PatternLayout pattern="${pattern_file}"/>
         </File>
-
-        <RollingFile name="rollingFile"
-                     fileName="logs/log.txt"
-                     filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
-            <PatternLayout>
-                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
-            </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy interval = "1" />
-                <SizeBasedTriggeringPolicy
-                        size="250 MB" />
-            </Policies>
-        </RollingFile>
     </Appenders>
 
     <Loggers>

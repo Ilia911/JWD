@@ -1,11 +1,15 @@
 package com.epam.jwd.entity;
 
 
+import com.epam.jwd.strategy.PropertyStrategy;
+import com.epam.jwd.strategy.impl.LinePropertyStrategy;
+
 import java.util.Arrays;
 
 public class Line extends Figure {
 
     private Point[] arrPoint = new Point[2];
+    private PropertyStrategy figurePropertiesStrategy = LinePropertyStrategy.getInstance();
 
     public Line() {}
 
@@ -14,9 +18,25 @@ public class Line extends Figure {
         arrPoint[1] = endPoint;
 
     }
-    public Line(Point[] arrPoint) {
-        this.arrPoint[0] = arrPoint[0];
-        this.arrPoint[1] = arrPoint[1];
+
+    @Override
+    public PropertyStrategy getFigurePropertiesStrategy() {
+        return figurePropertiesStrategy;
+    }
+
+    @Override
+    public void setFigurePropertiesStrategy(PropertyStrategy figurePropertiesStrategy) {
+        this.figurePropertiesStrategy = figurePropertiesStrategy;
+    }
+
+    @Override
+    public double fetchPerimeter() {
+        return figurePropertiesStrategy.calculatePerimeter(arrPoint);
+    }
+
+    @Override
+    public double fetchArea() {
+        return figurePropertiesStrategy.calculateArea(arrPoint);
     }
 
     @Override
