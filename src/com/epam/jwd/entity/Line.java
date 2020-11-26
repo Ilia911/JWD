@@ -8,15 +8,13 @@ import java.util.Arrays;
 
 public class Line extends Figure {
 
-    private Point[] arrPoint = new Point[2];
+    private Point[] arrPoint;
     private PropertyStrategy figurePropertiesStrategy = LinePropertyStrategy.getInstance();
 
     public Line() {}
 
-    public Line(Point startPoint, Point endPoint) {
-        arrPoint[0] = startPoint;
-        arrPoint[1] = endPoint;
-
+    public Line(Point... arrPoint) {
+        this.arrPoint = arrPoint;
     }
 
     @Override
