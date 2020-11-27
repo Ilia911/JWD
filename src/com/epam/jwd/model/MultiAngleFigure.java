@@ -17,9 +17,10 @@ public class MultiAngleFigure extends Figure {
         this.arrPoint = arrPoint;
     }
 
+
     @Override
     public PropertyStrategy getFigurePropertiesStrategy() {
-        return super.getFigurePropertiesStrategy();
+        return figurePropertyStrategy;
     }
 
     @Override
@@ -29,12 +30,12 @@ public class MultiAngleFigure extends Figure {
 
     @Override
     public double fetchPerimeter() {
-        return super.fetchPerimeter();
+        return figurePropertyStrategy.calculatePerimeter(arrPoint);
     }
 
     @Override
     public double fetchArea() {
-        return super.fetchArea();
+        return figurePropertyStrategy.calculateArea(arrPoint);
     }
 
     @Override
@@ -50,9 +51,7 @@ public class MultiAngleFigure extends Figure {
     @Override
     public String toString() {
         return "MultiAngleFigure{" +
-                "arrPoint=" + Arrays.toString(arrPoint) +
-                ", figurePropertyStrategy=" + figurePropertyStrategy +
-                '}';
+                "Points:" + Arrays.toString(arrPoint);
     }
 
     @Override

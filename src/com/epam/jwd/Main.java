@@ -17,21 +17,28 @@ public class Main {
         Figure[] arrTriangle;
         Figure[] arrSquare;
 
-        Main main = new Main();
+        CreaterHardcoreElement createrHardcoreElement = new CreaterHardcoreElement();
 
-        arrPoint = main.hardcoreArrPoint();
-        arrLine = main.hardcoreArrLine();
-        arrTriangle = main.hardcoreArrTriangle();
-        arrSquare = main.hardcoreArrSquare();
+        arrPoint = createrHardcoreElement.hardcoreArrPoint();
+        arrLine = createrHardcoreElement.hardcoreArrLine();
+        arrTriangle = createrHardcoreElement.hardcoreArrTriangle();
+        arrSquare = createrHardcoreElement.hardcoreArrSquare();
 
         logArrPoint(arrPoint);
         logArrLine(arrLine);
         logArrTriangle(arrTriangle);
         logArrSquare(arrSquare);
 
-        FigureFactory squareFactorySingle = SquareFactory.getInstance();
-        Figure newSquare = squareFactorySingle.createFigure(arrPoint);
-        LOGGER.log(Level.INFO, "new square is: {}", newSquare.fetchArea());
+        FigureFactory multiAngleFactory = MultiAngleFigureFactory.getInstance();
+
+        Figure multiAngleFigure = multiAngleFactory.createFigure(arrPoint);
+        LOGGER.log(Level.INFO, "New multiAngleFigure is \n{};\n and it's area = {}"
+                , multiAngleFigure, multiAngleFigure.fetchArea());
+
+        Point[] newRandomArrPoint = createrHardcoreElement.createRandomArrPoint(5);
+        Figure multiAngleFigure2 = multiAngleFactory.createFigure(newRandomArrPoint);
+        LOGGER.log(Level.INFO, "New multiAngleFigure is \n{};\n and it's perimeter = {}"
+                , multiAngleFigure2, multiAngleFigure2.fetchPerimeter());
 
 
 
@@ -135,36 +142,7 @@ public class Main {
         } while(++counter < arrPoint.length);
     }
 
-    private Point[] hardcoreArrPoint() {
-        return new Point[] {new Point(0,0), new Point(0,2), new Point(2,2), new Point(2, 0)};
-    }
 
-    private Figure[] hardcoreArrLine() {
-        Figure[] arrLine = new Line[2];
-        FigureFactory lineFactory = LineFactory.getInstance();
-        arrLine[0] = lineFactory.createFigure(new Point(2, 5), new Point(9,0));
-        arrLine[1] = lineFactory.createFigure(new Point(1, 4), new Point(3,8));
-        return  arrLine;
-    }
-
-    private Figure[] hardcoreArrTriangle() {
-        Figure[] arrTriangle = new Triangle[2];
-        FigureFactory triangleFactory = TriangleFactory.getInstance();
-        arrTriangle[0] = triangleFactory.createFigure(new Point(4,4), new Point(2,3), new Point(4,4));
-        arrTriangle[1] = triangleFactory.createFigure(new Point(4,4), new Point(3,3), new Point(-1,-1));
-        return arrTriangle;
-    }
-
-    private Figure[] hardcoreArrSquare() {
-        FigureFactory squareFactory = SquareFactory.getInstance();
-        Figure[] arrSquare = new Square[1];
-        Point point1 = new Point(0,0);
-        Point point2 = new Point(0,2);
-        Point point3 = new Point(2,2);
-        Point point4 = new Point(2, 0);
-        arrSquare[0] = squareFactory.createFigure(point1, point2, point3, point4);
-        return arrSquare;
-    }
 
     private static boolean checkFigureExistence (Figure figure) {
         Point[] arrPoint = figure.getArrPoint();
