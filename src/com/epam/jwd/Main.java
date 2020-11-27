@@ -29,6 +29,12 @@ public class Main {
         logArrTriangle(arrTriangle);
         logArrSquare(arrSquare);
 
+        Client client = configureClient(arrPoint);
+        double area = client.fetchArea();
+        LOGGER.log(Level.INFO, "Area of the figure: {}",  area);
+
+
+
         FigureFactory multiAngleFactory = MultiAngleFigureFactory.getInstance();
 
         Figure multiAngleFigure = multiAngleFactory.createFigure(arrPoint);
@@ -44,6 +50,27 @@ public class Main {
 
 
     }
+    private static Client configureClient(Point[] arrPoint) {
+        Client client;
+        FigureFactory factory;
+
+        switch (arrPoint.length) {
+            case 2:
+                factory = LineFactory.getInstance();
+                break;
+            case 3:
+                factory = TriangleFactory.getInstance();
+                break;
+            case 4:
+                factory = SquareFactory.getInstance();
+                break;
+            default:
+                factory = MultiAngleFigureFactory.getInstance();
+        }
+        client = new Client(factory, arrPoint);
+        return client;
+    }
+
     private static void logArrLine(Figure[] arrFigure) {
 
         for (int i = 0; i < arrFigure.length; i++) {
