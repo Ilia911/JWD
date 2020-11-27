@@ -1,11 +1,12 @@
-package com.epam.jwd.entity;
+package com.epam.jwd.model;
 
+import com.epam.jwd.entity.Point;
 import com.epam.jwd.strategy.PropertyStrategy;
 import com.epam.jwd.strategy.impl.LinePropertyStrategy;
 
 import java.util.Arrays;
 
-public class Figure {
+public abstract class Figure {
 
     private Point[] arrPoint;
     private PropertyStrategy figurePropertiesStrategy;
@@ -28,26 +29,6 @@ public class Figure {
     }
     public double fetchArea() {
         return figurePropertiesStrategy.calculateArea(arrPoint);
-    }
-
-    @Override
-    public String toString() {
-        return "Figure{" +
-                "arrPoint=" + Arrays.toString(arrPoint) +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Figure)) return false;
-        Figure figure = (Figure) o;
-        return Arrays.equals(arrPoint, figure.arrPoint);
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(arrPoint);
     }
 
     public Point[] getArrPoint() {

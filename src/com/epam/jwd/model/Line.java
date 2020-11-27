@@ -1,20 +1,23 @@
-package com.epam.jwd.entity;
+package com.epam.jwd.model;
 
 
+import com.epam.jwd.entity.Point;
 import com.epam.jwd.strategy.PropertyStrategy;
 import com.epam.jwd.strategy.impl.LinePropertyStrategy;
 
 import java.util.Arrays;
 
-public class Line extends Figure {
+    public class Line extends Figure {
 
-    private Point[] arrPoint;
+    private Point[] arrPoint = new Point[2];
     private PropertyStrategy figurePropertiesStrategy = LinePropertyStrategy.getInstance();
 
-    public Line() {}
+    Line() {}
 
-    public Line(Point... arrPoint) {
-        this.arrPoint = arrPoint;
+    Line(Point... arrPoint) {
+        for(int i = 0; i < this.arrPoint.length; i++) {
+            this.arrPoint[i] = arrPoint[i];
+        }
     }
 
     @Override

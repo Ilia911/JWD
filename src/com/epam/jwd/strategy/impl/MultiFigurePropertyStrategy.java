@@ -1,10 +1,9 @@
 package com.epam.jwd.strategy.impl;
 
-
 import com.epam.jwd.entity.Point;
 import com.epam.jwd.strategy.PropertyStrategy;
 
-public enum SquarePropertyStrategy implements PropertyStrategy {
+public enum MultiFigurePropertyStrategy implements PropertyStrategy {
     INSTANCE;
 
     @Override
