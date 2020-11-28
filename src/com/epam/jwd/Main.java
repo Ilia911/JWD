@@ -2,6 +2,7 @@ package com.epam.jwd;
 
 import com.epam.jwd.entity.*;
 import com.epam.jwd.model.*;
+import com.epam.jwd.model.exception.TooShortPointArrayException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,44 +18,48 @@ public class Main {
         Figure[] arrTriangle;
         Figure[] arrSquare;
 
-        CreaterHardcoreElement createrHardcoreElement = new CreaterHardcoreElement();
+        ElementArrCreator elementArrCreator = new ElementArrCreator();
 
-        arrPoint = createrHardcoreElement.hardcoreArrPoint();
-        arrLine = createrHardcoreElement.hardcoreArrLine();
-        arrTriangle = createrHardcoreElement.hardcoreArrTriangle();
-        arrSquare = createrHardcoreElement.hardcoreArrSquare();
+        arrPoint = elementArrCreator.hardcoreArrPoint();
+        arrLine = elementArrCreator.hardcoreArrLine();
+        arrTriangle = elementArrCreator.hardcoreArrTriangle();
+        arrSquare = elementArrCreator.hardcoreArrSquare();
 
         logArrPoint(arrPoint);
         logArrLine(arrLine);
         logArrTriangle(arrTriangle);
         logArrSquare(arrSquare);
 
-        Client client = configureClient(arrPoint);
-        double area = client.fetchArea();
-        LOGGER.log(Level.INFO, "Area of the figure: {}",  area);
-
-
-
         FigureFactory multiAngleFactory = MultiAngleFigureFactory.getInstance();
+        Point[] newRandomArrPoint = elementArrCreator.createRandomArrPoint();
 
-        Figure multiAngleFigure = multiAngleFactory.createFigure(arrPoint);
-        LOGGER.log(Level.INFO, "New multiAngleFigure is \n{};\n and it's area = {}"
-                , multiAngleFigure, multiAngleFigure.fetchArea());
+        Client client = null;
+        try {
+            client = configureClient(newRandomArrPoint);
+            double area = client.fetchArea();
+            LOGGER.log(Level.INFO, "Area of the figure: {}",  area);
+        } catch (TooShortPointArrayException e) {
+            LOGGER.log(Level.ERROR, "Unvalid length of the array");
+        }
 
-        Point[] newRandomArrPoint = createrHardcoreElement.createRandomArrPoint(5);
         Figure multiAngleFigure2 = multiAngleFactory.createFigure(newRandomArrPoint);
         LOGGER.log(Level.INFO, "New multiAngleFigure is \n{};\n and it's perimeter = {}"
                 , multiAngleFigure2, multiAngleFigure2.fetchPerimeter());
 
 
-
+        Figure multiAngleFigure = multiAngleFactory.createFigure(arrPoint);
+        LOGGER.log(Level.INFO, "New multiAngleFigure is \n{};\n and it's area = {}"
+                , multiAngleFigure, multiAngleFigure.fetchArea());
 
     }
-    private static Client configureClient(Point[] arrPoint) {
+
+    private static Client configureClient(Point[] arrPoint) throws TooShortPointArrayException {
         Client client;
         FigureFactory factory;
 
         switch (arrPoint.length) {
+            case 1:
+                throw new TooShortPointArrayException();
             case 2:
                 factory = LineFactory.getInstance();
                 break;
@@ -107,7 +112,6 @@ public class Main {
         int x3 = arrPoint[2].getX();
         int y3 = arrPoint[2].getY();
         return ((x1-x3)*(y2-y3) != (x2-x3)*(y1-y3));
-
     }
 
     private static void logArrSquare(Figure[] arrFigure) {
@@ -143,8 +147,8 @@ public class Main {
             }
         }
         return false;
-
     }
+
     private static int calculateSqareLength(Point point1, Point point2) {
         int x1 = point1.getX();
         int y1 = point1.getY();
@@ -168,8 +172,6 @@ public class Main {
             LOGGER.log(Level.INFO, "arr[{}] = {}", counter, arrPoint[counter]);
         } while(++counter < arrPoint.length);
     }
-
-
 
     private static boolean checkFigureExistence (Figure figure) {
         Point[] arrPoint = figure.getArrPoint();

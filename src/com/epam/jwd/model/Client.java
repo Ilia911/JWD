@@ -6,7 +6,6 @@ public class Client {
 
     private Figure figure;
 
-
     public Client(FigureFactory factory, Point[] arrPoint){
         figure = factory.createFigure(arrPoint);
     }

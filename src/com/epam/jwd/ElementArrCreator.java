@@ -5,7 +5,7 @@ import com.epam.jwd.model.*;
 
 import java.util.Random;
 
-public class CreaterHardcoreElement {
+public class ElementArrCreator {
 
     public Point[] hardcoreArrPoint() {
         Point[] arrPoint = new Point[6];
@@ -21,6 +21,17 @@ public class CreaterHardcoreElement {
     public Point[] createRandomArrPoint(int length) {
         Point[] arrPoint = new Point[length];
         Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            arrPoint[i] = new Point(random.nextInt(10) - 4, random.nextInt(10) - 4);
+        }
+        return arrPoint;
+    }
+
+    public Point[] createRandomArrPoint() {
+        Random random = new Random();
+        int length = 4 + random.nextInt(3);
+        Point[] arrPoint = new Point[length];
+
         for (int i = 0; i < length; i++) {
             arrPoint[i] = new Point(random.nextInt(10) - 4, random.nextInt(10) - 4);
         }

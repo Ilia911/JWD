@@ -2,19 +2,17 @@ package com.epam.jwd.model;
 
 import com.epam.jwd.entity.Point;
 import com.epam.jwd.strategy.PropertyStrategy;
-import com.epam.jwd.strategy.impl.LinePropertyStrategy;
-
-import java.util.Arrays;
+import com.epam.jwd.strategy.impl.MultiFigurePropertyStrategy;
 
 public abstract class Figure {
 
     private Point[] arrPoint;
-    private PropertyStrategy figurePropertiesStrategy;
-    {
-        figurePropertiesStrategy = LinePropertyStrategy.getInstance();
-    }
+    private PropertyStrategy figurePropertiesStrategy= MultiFigurePropertyStrategy.INSTANCE;
 
-    public Figure() {};
+    public Figure() {}
+    public Figure(Point... arrPoint) {
+    this.arrPoint = arrPoint;
+    }
 
     public PropertyStrategy getFigurePropertiesStrategy() {
         return figurePropertiesStrategy;
