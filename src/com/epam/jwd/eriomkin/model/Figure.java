@@ -1,17 +1,15 @@
-package com.epam.jwd.model;
+package com.epam.jwd.eriomkin.model;
 
-import com.epam.jwd.entity.Point;
-import com.epam.jwd.strategy.PropertyStrategy;
-import com.epam.jwd.strategy.impl.MultiFigurePropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.impl.MultiFigurePropertyStrategy;
 
 public abstract class Figure {
 
-    private Point[] arrPoint;
-    private PropertyStrategy figurePropertiesStrategy= MultiFigurePropertyStrategy.INSTANCE;
+    protected Point[] arrPoint;
+    private PropertyStrategy figurePropertiesStrategy = MultiFigurePropertyStrategy.INSTANCE;
 
-    public Figure() {}
     public Figure(Point... arrPoint) {
-    this.arrPoint = arrPoint;
+        this.arrPoint = arrPoint;
     }
 
     public PropertyStrategy getFigurePropertiesStrategy() {
@@ -25,6 +23,7 @@ public abstract class Figure {
     public double fetchPerimeter() {
         return figurePropertiesStrategy.calculatePerimeter(arrPoint);
     }
+
     public double fetchArea() {
         return figurePropertiesStrategy.calculateArea(arrPoint);
     }
@@ -33,7 +32,4 @@ public abstract class Figure {
         return arrPoint;
     }
 
-    public void setArrPoint(Point[] arrPoint) {
-        this.arrPoint = arrPoint;
-    }
 }

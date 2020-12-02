@@ -1,18 +1,17 @@
-package com.epam.jwd.model;
-
-import com.epam.jwd.entity.Point;
+package com.epam.jwd.eriomkin.model;
 
 public class Client {
 
     private Figure figure;
 
-    public Client(FigureFactory factory, Point[] arrPoint){
+    public Client(FigureFactory factory, Point[] arrPoint) {
         figure = factory.createFigure(arrPoint);
     }
 
     public double fetchArea() {
         return figure.fetchArea();
     }
+
     public double fetchPerimeter() {
         return figure.fetchPerimeter();
     }

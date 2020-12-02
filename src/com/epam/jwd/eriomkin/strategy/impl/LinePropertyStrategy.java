@@ -1,17 +1,19 @@
-package com.epam.jwd.strategy.impl;
+package com.epam.jwd.eriomkin.strategy.impl;
 
 
-import com.epam.jwd.entity.Point;
-import com.epam.jwd.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.model.Point;
 
 public final class LinePropertyStrategy implements PropertyStrategy {
     private final static LinePropertyStrategy instance = new LinePropertyStrategy();
 
-    private LinePropertyStrategy() {}
+    private LinePropertyStrategy() {
+    }
 
     public static LinePropertyStrategy getInstance() {
         return instance;
     }
+
     @Override
     public double calculatePerimeter(Point[] arr) {
         return calculeateLengthBetweenTwoPoint(arr[0], arr[1]);

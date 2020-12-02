@@ -1,13 +1,12 @@
-package com.epam.jwd.model;
+package com.epam.jwd.eriomkin.model;
 
-import com.epam.jwd.entity.Point;
-
-public class LineFactory extends FigureFactory<Line> {
+public class LineFactory extends FigureFactory {
 
     private static Line[] linesPool = new Line[42];
     private static LineFactory instance;
 
-    LineFactory(){}
+    LineFactory() {
+    }
 
     public static FigureFactory getInstance() {
         if (instance == null) {
@@ -15,9 +14,10 @@ public class LineFactory extends FigureFactory<Line> {
         }
         return instance;
     }
+
     @Override
-    public Line createFigure(Point... arrPoint) {
-        Line line;
+    public Figure createFigure(Point... arrPoint) {
+        Figure line;
         line = fetchLine(arrPoint);
         if (line == null) {
             line = createLineAndSaveInPool(arrPoint);
@@ -25,7 +25,7 @@ public class LineFactory extends FigureFactory<Line> {
         return line;
     }
 
-    private Line createLineAndSaveInPool(Point[] arrPoint) {
+    private Figure createLineAndSaveInPool(Point[] arrPoint) {
         Line newLine = new Line(arrPoint);
         for (int i = 0; i < linesPool.length; i++) {
             if (linesPool[i] == null) {
@@ -42,7 +42,7 @@ public class LineFactory extends FigureFactory<Line> {
 
     private void scaleLinesPool() {
         Line[] tempLinesPool = linesPool;
-        linesPool = new Line[(int) (linesPool.length*1.5)];
+        linesPool = new Line[(int) (linesPool.length * 1.5)];
         for (int i = 0; i < tempLinesPool.length; i++) {
             linesPool[i] = tempLinesPool[i];
         }
@@ -56,7 +56,5 @@ public class LineFactory extends FigureFactory<Line> {
         }
         return null;
     }
-
-
 
 }

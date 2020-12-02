@@ -1,21 +1,17 @@
-package com.epam.jwd.model;
+package com.epam.jwd.eriomkin.model;
 
-
-import com.epam.jwd.entity.Point;
-import com.epam.jwd.strategy.PropertyStrategy;
-import com.epam.jwd.strategy.impl.LinePropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.impl.TrianglePropertyStrategy;
 
 import java.util.Arrays;
 
-    public class Line extends Figure {
+public class Triangle extends Figure {
 
-    private Point[] arrPoint = new Point[2];
-    private PropertyStrategy figurePropertiesStrategy = LinePropertyStrategy.getInstance();
+    private static final int NUMBER_OF_FIGURE_POINTS = 3;
+    private PropertyStrategy figurePropertiesStrategy = TrianglePropertyStrategy.getInstance();
 
-    Line() {}
-
-    Line(Point... arrPoint) {
-        for(int i = 0; i < this.arrPoint.length; i++) {
+    Triangle(Point... arrPoint) {
+        for (int i = 0; i < NUMBER_OF_FIGURE_POINTS; i++) {
             this.arrPoint[i] = arrPoint[i];
         }
     }
@@ -42,17 +38,18 @@ import java.util.Arrays;
 
     @Override
     public String toString() {
-        return "Line{" + Arrays.toString(arrPoint) +
+        return "Triangle {" +
+                Arrays.toString(arrPoint) +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Line)) return false;
+        if (!(o instanceof Triangle)) return false;
         if (!super.equals(o)) return false;
-        Line line = (Line) o;
-        return Arrays.equals(arrPoint, line.arrPoint);
+        Triangle triangle = (Triangle) o;
+        return Arrays.equals(arrPoint, triangle.arrPoint);
     }
 
     @Override
@@ -67,8 +64,4 @@ import java.util.Arrays;
         return arrPoint;
     }
 
-    @Override
-    public void setArrPoint(Point[] arrPoint) {
-        this.arrPoint = arrPoint;
-    }
 }

@@ -1,12 +1,11 @@
-package com.epam.jwd.model;
+package com.epam.jwd.eriomkin.model;
 
-import com.epam.jwd.entity.Point;
-
-public class SquareFactory extends FigureFactory<Square> {
+public class SquareFactory extends FigureFactory {
     private static Square[] squaresPool = new Square[42];
     private static SquareFactory instance;
 
-    SquareFactory(){}
+    SquareFactory() {
+    }
 
     public static FigureFactory getInstance() {
         if (instance == null) {
@@ -14,8 +13,9 @@ public class SquareFactory extends FigureFactory<Square> {
         }
         return instance;
     }
+
     @Override
-    public Square createFigure(Point... arrPoint) {
+    public Figure createFigure(Point... arrPoint) {
         Square square;
         square = fetchSquare(arrPoint);
         if (square == null) {
@@ -41,7 +41,7 @@ public class SquareFactory extends FigureFactory<Square> {
 
     private void scaleSquarePool() {
         Square[] tempLinesPool = squaresPool;
-        squaresPool = new Square[(int) (squaresPool.length*1.5)];
+        squaresPool = new Square[(int) (squaresPool.length * 1.5)];
         for (int i = 0; i < tempLinesPool.length; i++) {
             squaresPool[i] = tempLinesPool[i];
         }

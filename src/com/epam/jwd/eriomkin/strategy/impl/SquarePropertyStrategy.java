@@ -1,8 +1,8 @@
-package com.epam.jwd.strategy.impl;
+package com.epam.jwd.eriomkin.strategy.impl;
 
 
-import com.epam.jwd.entity.Point;
-import com.epam.jwd.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.model.Point;
 
 public enum SquarePropertyStrategy implements PropertyStrategy {
     INSTANCE;

@@ -1,0 +1,8 @@
+.git
+.idea
+lib/
+logs/
+out/
+src/by/
+src/test/
+jwd_1.iml

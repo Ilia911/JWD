@@ -1,20 +1,17 @@
-package com.epam.jwd.model;
+package com.epam.jwd.eriomkin.model;
 
-import com.epam.jwd.entity.Point;
-import com.epam.jwd.strategy.PropertyStrategy;
-import com.epam.jwd.strategy.impl.SquarePropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.impl.SquarePropertyStrategy;
 
 import java.util.Arrays;
 
-public class Square extends  Figure{
+public class Square extends Figure {
 
-    private Point[] arrPoint = new Point[4];
+    private static final int NUMBER_OF_FIGURE_POINTS = 4;
     private PropertyStrategy figurePropertyStrategy = SquarePropertyStrategy.INSTANCE;
 
-    Square() {}
-
     Square(Point... arrPoint) {
-        for (int i = 0; i < this.arrPoint.length; i++) {
+        for (int i = 0; i < NUMBER_OF_FIGURE_POINTS; i++) {
             this.arrPoint[i] = arrPoint[i];
         }
     }
@@ -67,8 +64,4 @@ public class Square extends  Figure{
         return arrPoint;
     }
 
-    @Override
-    public void setArrPoint(Point[] arrPoint) {
-        this.arrPoint = arrPoint;
-    }
 }

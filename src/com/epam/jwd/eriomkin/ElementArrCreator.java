@@ -1,7 +1,14 @@
-package com.epam.jwd;
+package com.epam.jwd.eriomkin;
 
-import com.epam.jwd.entity.Point;
-import com.epam.jwd.model.*;
+import com.epam.jwd.eriomkin.model.Figure;
+import com.epam.jwd.eriomkin.model.FigureFactory;
+import com.epam.jwd.eriomkin.model.Line;
+import com.epam.jwd.eriomkin.model.LineFactory;
+import com.epam.jwd.eriomkin.model.Point;
+import com.epam.jwd.eriomkin.model.Square;
+import com.epam.jwd.eriomkin.model.SquareFactory;
+import com.epam.jwd.eriomkin.model.Triangle;
+import com.epam.jwd.eriomkin.model.TriangleFactory;
 
 import java.util.Random;
 

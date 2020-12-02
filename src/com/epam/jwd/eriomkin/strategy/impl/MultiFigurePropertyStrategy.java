@@ -1,7 +1,7 @@
-package com.epam.jwd.strategy.impl;
+package com.epam.jwd.eriomkin.strategy.impl;
 
-import com.epam.jwd.entity.Point;
-import com.epam.jwd.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.model.Point;
+import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
 
 public enum MultiFigurePropertyStrategy implements PropertyStrategy {
     INSTANCE;

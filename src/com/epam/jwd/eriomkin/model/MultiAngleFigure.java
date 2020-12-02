@@ -1,17 +1,15 @@
-package com.epam.jwd.model;
+package com.epam.jwd.eriomkin.model;
 
-import com.epam.jwd.entity.Point;
-import com.epam.jwd.strategy.PropertyStrategy;
-import com.epam.jwd.strategy.impl.MultiFigurePropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
+import com.epam.jwd.eriomkin.strategy.impl.MultiFigurePropertyStrategy;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 public class MultiAngleFigure extends Figure {
     private Point[] arrPoint;
-    private PropertyStrategy figurePropertyStrategy = MultiFigurePropertyStrategy.INSTANCE;
 
-    public MultiAngleFigure(){}
+    private PropertyStrategy figurePropertyStrategy = MultiFigurePropertyStrategy.INSTANCE;
 
     public MultiAngleFigure(Point... arrPoint) {
         this.arrPoint = arrPoint;
@@ -41,11 +39,6 @@ public class MultiAngleFigure extends Figure {
     @Override
     public Point[] getArrPoint() {
         return super.getArrPoint();
-    }
-
-    @Override
-    public void setArrPoint(Point[] arrPoint) {
-        super.setArrPoint(arrPoint);
     }
 
     @Override

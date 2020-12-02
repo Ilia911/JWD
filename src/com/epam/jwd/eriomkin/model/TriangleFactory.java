@@ -1,12 +1,11 @@
-package com.epam.jwd.model;
+package com.epam.jwd.eriomkin.model;
 
-import com.epam.jwd.entity.Point;
-
-public class TriangleFactory extends FigureFactory<Triangle> {
+public class TriangleFactory extends FigureFactory {
     private static Triangle[] trianglesPool = new Triangle[42];
     private static TriangleFactory instance;
 
-    TriangleFactory(){}
+    TriangleFactory() {
+    }
 
     public static FigureFactory getInstance() {
         if (instance == null) {
@@ -14,8 +13,9 @@ public class TriangleFactory extends FigureFactory<Triangle> {
         }
         return instance;
     }
+
     @Override
-    public Triangle createFigure(Point... arrPoint) {
+    public Figure createFigure(Point... arrPoint) {
         Triangle triangle;
         triangle = fetchTriangle(arrPoint);
         if (triangle == null) {
@@ -41,7 +41,7 @@ public class TriangleFactory extends FigureFactory<Triangle> {
 
     private void scaleTrianglePool() {
         Triangle[] tempLinesPool = trianglesPool;
-        trianglesPool = new Triangle[(int) (trianglesPool.length*1.5)];
+        trianglesPool = new Triangle[(int) (trianglesPool.length * 1.5)];
         for (int i = 0; i < tempLinesPool.length; i++) {
             trianglesPool[i] = tempLinesPool[i];
         }
@@ -50,7 +50,7 @@ public class TriangleFactory extends FigureFactory<Triangle> {
     private Triangle fetchTriangle(Point[] arrPoint) {
         for (Triangle triangle : trianglesPool) {
             if (triangle != null && triangle.getArrPoint().equals(arrPoint)) {
-                    return triangle;
+                return triangle;
             }
         }
         return null;
