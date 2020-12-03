@@ -1,5 +1,7 @@
 package com.epam.jwd.eriomkin.model;
 
+import com.epam.jwd.eriomkin.exception.FigureNotExistException;
+
 public class LineFactory extends FigureFactory {
 
     private static Line[] linesPool = new Line[42];
@@ -16,7 +18,7 @@ public class LineFactory extends FigureFactory {
     }
 
     @Override
-    public Figure createFigure(Point... arrPoint) {
+    public Figure createFigure(Point... arrPoint) throws FigureNotExistException {
         Figure line;
         line = fetchLine(arrPoint);
         if (line == null) {

@@ -1,5 +1,7 @@
 package com.epam.jwd.eriomkin.model;
 
+import com.epam.jwd.eriomkin.exception.FigureNotExistException;
+
 public class SquareFactory extends FigureFactory {
     private static Square[] squaresPool = new Square[42];
     private static SquareFactory instance;
@@ -15,7 +17,7 @@ public class SquareFactory extends FigureFactory {
     }
 
     @Override
-    public Figure createFigure(Point... arrPoint) {
+    public Figure createFigure(Point... arrPoint) throws FigureNotExistException {
         Square square;
         square = fetchSquare(arrPoint);
         if (square == null) {

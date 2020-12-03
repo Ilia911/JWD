@@ -1,5 +1,7 @@
 package com.epam.jwd.eriomkin.model;
 
+import com.epam.jwd.eriomkin.exception.FigureNotExistException;
+
 public class TriangleFactory extends FigureFactory {
     private static Triangle[] trianglesPool = new Triangle[42];
     private static TriangleFactory instance;
@@ -15,7 +17,7 @@ public class TriangleFactory extends FigureFactory {
     }
 
     @Override
-    public Figure createFigure(Point... arrPoint) {
+    public Figure createFigure(Point... arrPoint) throws FigureNotExistException {
         Triangle triangle;
         triangle = fetchTriangle(arrPoint);
         if (triangle == null) {

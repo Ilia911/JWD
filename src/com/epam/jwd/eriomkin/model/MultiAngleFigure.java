@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class MultiAngleFigure extends Figure {
-    private Point[] arrPoint;
 
     private PropertyStrategy figurePropertyStrategy = MultiFigurePropertyStrategy.INSTANCE;
 

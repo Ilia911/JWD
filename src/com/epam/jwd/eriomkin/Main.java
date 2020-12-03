@@ -1,6 +1,6 @@
 package com.epam.jwd.eriomkin;
 
-import com.epam.jwd.eriomkin.exception.TooShortPointArrayException;
+import com.epam.jwd.eriomkin.exception.FigureNotExistException;
 
 import com.epam.jwd.eriomkin.model.Client;
 import com.epam.jwd.eriomkin.model.FigureFactory;
@@ -26,23 +26,25 @@ public class Main {
 
         Client client = null;
 
+
         try {
             client = example.configureClient(newRandomArrPoint);
             double area = client.fetchArea();
             LOGGER.log(Level.INFO, "Area of the figure: {}", area);
-        } catch (TooShortPointArrayException e) {
-            LOGGER.log(Level.ERROR, "Unvalid length of the array");
+        } catch (FigureNotExistException e) {
+            LOGGER.log(Level.ERROR, e.getMessage());
         }
 
     }
 
-    private Client configureClient(Point[] arrPoint) throws TooShortPointArrayException {
+    private Client configureClient(Point[] arrPoint) throws FigureNotExistException {
         Client client;
         FigureFactory factory;
 
         switch (arrPoint.length) {
+            case 0:
             case 1:
-                throw new TooShortPointArrayException("Too short array of points!");
+                throw new FigureNotExistException("Array of the points must contain more than one point!");
             case 2:
                 factory = LineFactory.getInstance();
                 break;
