@@ -1,6 +1,7 @@
 package com.epam.jwd.eriomkin.model;
 
-import com.epam.jwd.eriomkin.exception.FigureNotExistException;
+import com.epam.jwd.eriomkin.exception.FigureException;
+import com.epam.jwd.eriomkin.service.impl.ServiceProvider;
 
 public class MultiAngleFigureFactory extends FigureFactory {
 
@@ -17,7 +18,10 @@ public class MultiAngleFigureFactory extends FigureFactory {
     }
 
     @Override
-    public Figure createFigure(Point... arrPoint) throws FigureNotExistException {
-        return new MultiAngleFigure(arrPoint);
+    public Figure createFigure(Point... arrPoint) throws FigureException {
+        Figure figure;
+        figure = new MultiAngleFigure(arrPoint);
+        figure = ServiceProvider.getINSTANCE().getMultiangleFigurelePostProcessor().process(figure);
+        return figure;
     }
 }
