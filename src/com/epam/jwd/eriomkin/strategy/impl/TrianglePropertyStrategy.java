@@ -20,9 +20,9 @@ public final class TrianglePropertyStrategy implements PropertyStrategy {
         double perimeter = 0;
 
         for (int i = 0; i < arr.length - 1; i++) {
-            perimeter += calculeateLengthBetweenTwoPoint(arr[i], arr[i + 1]);
+            perimeter += calculateLengthBetweenTwoPoint(arr[i], arr[i + 1]);
         }
-        perimeter += calculeateLengthBetweenTwoPoint(arr[0], arr[arr.length - 1]);
+        perimeter += calculateLengthBetweenTwoPoint(arr[0], arr[arr.length - 1]);
 
         return perimeter;
     }
@@ -30,16 +30,16 @@ public final class TrianglePropertyStrategy implements PropertyStrategy {
     @Override
     public double calculateArea(Point[] arr) {
 
-        double sideOne = calculeateLengthBetweenTwoPoint(arr[0], arr[1]);
-        double sideTwo = calculeateLengthBetweenTwoPoint(arr[1], arr[2]);
-        double sideThree = calculeateLengthBetweenTwoPoint(arr[0], arr[2]);
-        double perimeterHalf = (sideOne + sideTwo + sideThree) / 3;
+        double sideOne = calculateLengthBetweenTwoPoint(arr[0], arr[1]);
+        double sideTwo = calculateLengthBetweenTwoPoint(arr[1], arr[2]);
+        double sideThree = calculateLengthBetweenTwoPoint(arr[0], arr[2]);
+        double perimeterHalf = (sideOne + sideTwo + sideThree) / 2;
 
         return Math.sqrt(perimeterHalf * (perimeterHalf - sideOne) * (perimeterHalf - sideTwo)
                 * (perimeterHalf - sideThree));
     }
 
-    private static double calculeateLengthBetweenTwoPoint(Point p1, Point p2) {
+    private static double calculateLengthBetweenTwoPoint(Point p1, Point p2) {
 
         double x1 = p1.getX();
         double y1 = p1.getY();

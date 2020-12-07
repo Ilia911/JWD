@@ -5,16 +5,18 @@ import com.epam.jwd.eriomkin.model.Point;
 
 public class TriangleValidator {
     public static boolean isFigureValid(Figure figure) {
-        return (!isTwinPointsExist(figure) && isTriangleExist(figure));
+        return (isEnoughPoints(figure) && isTriangleExist(figure)) && !isNullPointExist(figure.getArrPoint());
     }
 
-    private static boolean isTwinPointsExist(Figure figure) {
-        Point[] arrPoint = figure.getArrPoint();
-        for (int i = 0; i < arrPoint.length - 1; i++) {
-            for (int j = 1 + i; j < arrPoint.length; j++) {
-                if (arrPoint[i].equals(arrPoint[j])) {
-                    return true;
-                }
+    private static boolean isEnoughPoints(Figure figure) {
+        final int NUMBER_OF_FIGURE_POINTS = 3;
+        return figure.getArrPoint().length == NUMBER_OF_FIGURE_POINTS;
+    }
+
+    private static boolean isNullPointExist(Point[] arrPoint) {
+        for (int i = 0; i < arrPoint.length; i++) {
+            if (arrPoint[i] == null) {
+                return true;
             }
         }
         return false;

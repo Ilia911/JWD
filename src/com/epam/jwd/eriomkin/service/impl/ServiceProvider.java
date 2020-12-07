@@ -12,6 +12,11 @@ public class ServiceProvider {
     private FigurePostProcessor linePostProcessor = new LineExistencePostProcessor();
     private FigurePostProcessor trianglePostProcessor = new TriangleExistencePostProcessor();
     private FigurePostProcessor squarePostProcessor = new SquareExistencePostProcessor();
+    private FigureExistencePreProcessor preProcessor = new FigureExistencePreProcessor();
+
+    public FigureExistencePreProcessor getPreProcessor() {
+        return preProcessor;
+    }
 
     public FigurePostProcessor getSquarePostProcessor() {
         return squarePostProcessor;

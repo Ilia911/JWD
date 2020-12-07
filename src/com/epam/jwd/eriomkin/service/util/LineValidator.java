@@ -7,14 +7,20 @@ public class LineValidator {
 
     public static boolean isFigureValid(Figure figure) {
 
-        Point[] arrPoint = figure.getArrPoint();
-        for (int i = 0; i < arrPoint.length - 1; i++) {
-            for (int j = 1 + i; j < arrPoint.length; j++) {
-                if (arrPoint[i].equals(arrPoint[j])) {
-                    return false;
-                }
+        return isEnoughPoints(figure.getArrPoint()) && !isNullPointExist(figure.getArrPoint());
+    }
+
+    private static boolean isEnoughPoints(Point[] arrPoint) {
+        final int NUMBER_OF_FIGURE_POINTS = 2;
+        return arrPoint.length == NUMBER_OF_FIGURE_POINTS;
+    }
+
+    private static boolean isNullPointExist(Point[] arrPoint) {
+        for (int i = 0; i < arrPoint.length; i++) {
+            if (arrPoint[i] == null) {
+            return true;
             }
         }
-        return true;
+        return false;
     }
 }

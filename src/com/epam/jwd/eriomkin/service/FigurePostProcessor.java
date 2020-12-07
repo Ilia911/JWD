@@ -1,7 +1,6 @@
 package com.epam.jwd.eriomkin.service;
 
 import com.epam.jwd.eriomkin.exception.FigureException;
-import com.epam.jwd.eriomkin.exception.FigureNotExistException;
 import com.epam.jwd.eriomkin.model.Figure;
 
 public interface FigurePostProcessor {

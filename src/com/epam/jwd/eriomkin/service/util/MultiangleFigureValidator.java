@@ -6,14 +6,20 @@ import com.epam.jwd.eriomkin.model.Point;
 public class MultiangleFigureValidator {
     public static boolean isFigureValid(Figure figure) {
 
-        Point[] arrPoint = figure.getArrPoint();
-        for (int i = 0; i < arrPoint.length - 1; i++) {
-            for (int j = 1 + i; j < arrPoint.length; j++) {
-                if (arrPoint[i].equals(arrPoint[j])) {
-                    return false;
-                }
+        return isEnoughPoints(figure) && !isNullPointExist(figure.getArrPoint());
+    }
+
+    private static boolean isNullPointExist(Point[] arrPoint) {
+        for (int i = 0; i < arrPoint.length; i++) {
+            if (arrPoint[i] == null) {
+                return true;
             }
         }
-        return true;
+        return false;
+    }
+
+    private static boolean isEnoughPoints(Figure figure) {
+        final int MIN_NUMBER_OF_FIGURE_POINTS = 4;
+        return figure.getArrPoint().length >= MIN_NUMBER_OF_FIGURE_POINTS;
     }
 }

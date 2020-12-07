@@ -12,7 +12,8 @@ public class Line extends Figure {
     private PropertyStrategy figurePropertiesStrategy = LinePropertyStrategy.getInstance();
 
     Line(Point... arrPoint) {
-        for (int i = 0; i < NUMBER_OF_FIGURE_POINTS; i++) {
+        this.arrPoint = new Point[NUMBER_OF_FIGURE_POINTS];
+        for (int i = 0; i < NUMBER_OF_FIGURE_POINTS && i < arrPoint.length; i++) {
             this.arrPoint[i] = arrPoint[i];
         }
     }

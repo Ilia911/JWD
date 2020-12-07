@@ -8,6 +8,7 @@ public abstract class Figure {
     protected Point[] arrPoint;
     private PropertyStrategy figurePropertiesStrategy = MultiFigurePropertyStrategy.INSTANCE;
 
+    public Figure() {}
     public Figure(Point... arrPoint) {
         this.arrPoint = arrPoint;
     }

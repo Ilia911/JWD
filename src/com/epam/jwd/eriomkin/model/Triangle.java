@@ -11,7 +11,8 @@ public class Triangle extends Figure {
     private PropertyStrategy figurePropertiesStrategy = TrianglePropertyStrategy.getInstance();
 
     Triangle(Point... arrPoint) {
-        for (int i = 0; i < NUMBER_OF_FIGURE_POINTS; i++) {
+        this.arrPoint = new Point[NUMBER_OF_FIGURE_POINTS];
+        for (int i = 0; i < NUMBER_OF_FIGURE_POINTS && i < arrPoint.length; i++) {
             this.arrPoint[i] = arrPoint[i];
         }
     }

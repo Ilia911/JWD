@@ -5,19 +5,21 @@ import com.epam.jwd.eriomkin.model.Point;
 
 public class SquareValidator {
     public static boolean isFigureValid(Figure figure) {
-        return (!isTwinPointsExist(figure) && isSquareExist(figure));
+        return (isEnoughPoints(figure) && !isNullPointExist(figure.getArrPoint()) && isSquareExist(figure));
     }
 
-    private static boolean isTwinPointsExist(Figure figure) {
-        Point[] arrPoint = figure.getArrPoint();
-        for (int i = 0; i < arrPoint.length - 1; i++) {
-            for (int j = 1 + i; j < arrPoint.length; j++) {
-                if (arrPoint[i].equals(arrPoint[j])) {
-                    return true;
-                }
+    private static boolean isNullPointExist(Point[] arrPoint) {
+        for (int i = 0; i < arrPoint.length; i++) {
+            if (arrPoint[i] == null) {
+                return true;
             }
         }
         return false;
+    }
+
+    private static boolean isEnoughPoints(Figure figure) {
+        final int NUMBER_OF_FIGURE_POINTS = 4;
+        return figure.getArrPoint().length == NUMBER_OF_FIGURE_POINTS;
     }
 
     private static boolean isSquareExist(Figure square) {
@@ -46,6 +48,6 @@ public class SquareValidator {
         int x2 = point2.getX();
         int y2 = point2.getY();
 
-        return (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1);
+        return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
     }
 }
