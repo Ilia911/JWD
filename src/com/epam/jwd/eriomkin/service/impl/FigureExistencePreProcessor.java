@@ -6,7 +6,7 @@ import com.epam.jwd.eriomkin.model.Point;
 import com.epam.jwd.eriomkin.service.FigurePreProcessor;
 import com.epam.jwd.eriomkin.service.util.FigureValidator;
 
-public class FigureExistencePreProcessor implements FigurePreProcessor {
+class FigureExistencePreProcessor implements FigurePreProcessor {
 
     FigureExistencePreProcessor(){}
 

@@ -8,7 +8,7 @@ import com.epam.jwd.eriomkin.model.Triangle;
 import com.epam.jwd.eriomkin.service.FigurePostProcessor;
 import com.epam.jwd.eriomkin.service.util.TriangleValidator;
 
-public class TriangleExistencePostProcessor implements FigurePostProcessor {
+class TriangleExistencePostProcessor implements FigurePostProcessor {
     /*
         Здесь надо будет ввести механизм связи с местом хранения фигур (файл, база данных)
         в которую будут сохраняться фигуры.

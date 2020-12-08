@@ -7,7 +7,7 @@ import com.epam.jwd.eriomkin.model.Line;
 import com.epam.jwd.eriomkin.service.FigurePostProcessor;
 import com.epam.jwd.eriomkin.service.util.LineValidator;
 
-public class LineExistencePostProcessor implements FigurePostProcessor {
+class LineExistencePostProcessor implements FigurePostProcessor {
 
     /*
     Здесь надо будет ввести механизм связи с местом хранения фигур (файл, база данных)

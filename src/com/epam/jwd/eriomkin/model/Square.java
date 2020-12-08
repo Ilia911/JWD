@@ -10,7 +10,7 @@ public class Square extends Figure {
     private static final int NUMBER_OF_FIGURE_POINTS = 4;
     private PropertyStrategy figurePropertyStrategy = SquarePropertyStrategy.INSTANCE;
 
-    Square(Point... arrPoint) {
+    public Square(Point... arrPoint) {
         this.arrPoint = new Point[NUMBER_OF_FIGURE_POINTS];
         for (int i = 0; i < NUMBER_OF_FIGURE_POINTS && i < arrPoint.length; i++) {
             this.arrPoint[i] = arrPoint[i];

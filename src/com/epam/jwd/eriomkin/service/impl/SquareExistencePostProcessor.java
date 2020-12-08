@@ -8,7 +8,7 @@ import com.epam.jwd.eriomkin.model.Square;
 import com.epam.jwd.eriomkin.service.FigurePostProcessor;
 import com.epam.jwd.eriomkin.service.util.SquareValidator;
 
-public class SquareExistencePostProcessor implements FigurePostProcessor {
+class SquareExistencePostProcessor implements FigurePostProcessor {
     /*
         Здесь надо будет ввести механизм связи с местом хранения фигур (файл, база данных)
         в которую будут сохраняться фигуры.

@@ -7,7 +7,7 @@ import com.epam.jwd.eriomkin.service.impl.ServiceProvider;
 public class MultiAngleFigureFactory extends FigureFactory {
 
     private static MultiAngleFigureFactory instance;
-    private FigurePostProcessor postProcessor = ServiceProvider.getINSTANCE().getMultiangleFigurelePostProcessor();
+    private FigurePostProcessor postProcessor = ServiceProvider.getINSTANCE().getMultiangleFigurePostProcessor();
 
     private MultiAngleFigureFactory() {
     }

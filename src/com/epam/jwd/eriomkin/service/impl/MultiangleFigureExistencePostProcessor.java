@@ -8,7 +8,7 @@ import com.epam.jwd.eriomkin.model.MultiAngleFigure;
 import com.epam.jwd.eriomkin.service.FigurePostProcessor;
 import com.epam.jwd.eriomkin.service.util.MultiangleFigureValidator;
 
-public class MultiangleFigureExistencePostProcessor implements FigurePostProcessor {
+class MultiangleFigureExistencePostProcessor implements FigurePostProcessor {
     /*
         Здесь надо будет ввести механизм связи с местом хранения фигур (файл, база данных)
         в которую будут сохраняться фигуры.

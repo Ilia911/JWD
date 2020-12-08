@@ -10,7 +10,7 @@ public class Triangle extends Figure {
     private static final int NUMBER_OF_FIGURE_POINTS = 3;
     private PropertyStrategy figurePropertiesStrategy = TrianglePropertyStrategy.getInstance();
 
-    Triangle(Point... arrPoint) {
+    public Triangle(Point... arrPoint) {
         this.arrPoint = new Point[NUMBER_OF_FIGURE_POINTS];
         for (int i = 0; i < NUMBER_OF_FIGURE_POINTS && i < arrPoint.length; i++) {
             this.arrPoint[i] = arrPoint[i];
