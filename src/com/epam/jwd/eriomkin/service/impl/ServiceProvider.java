@@ -16,16 +16,17 @@ public class ServiceProvider {
     private FigurePostProcessor linePostProcessor = new LineExistencePostProcessor();
     private FigurePostProcessor trianglePostProcessor = new TriangleExistencePostProcessor();
     private FigurePostProcessor squarePostProcessor = new SquareExistencePostProcessor();
-    private FigurePostProcessor multiangleFigurePostProcessor = new MultiangleFigureExistencePostProcessor();
+    private FigurePostProcessor multiangleFigurePostProcessor = new MultiAngleFigureExistencePostProcessor();
 
-
+    public static ServiceProvider getINSTANCE() {
+        return INSTANCE;
+    }
 
     public FigurePreProcessor getPreProcessor() {
         return preProcessor;
     }
-    public static ServiceProvider getINSTANCE() {
-        return INSTANCE;
-    }
+
+
     public FigurePostProcessor getPostProcessor(FigureType type) throws IlligalFigureTypeException {
         switch (type) {
             case LINE:
@@ -41,18 +42,5 @@ public class ServiceProvider {
         }
     }
 
-    // Delete these methods after delete factory in com.epam.jwd.eriomkin.model package
-    public FigurePostProcessor getLinePostProcessor() {
-        return linePostProcessor;
-    }
-    public FigurePostProcessor getTrianglePostProcessor() {
-        return trianglePostProcessor;
-    }
-    public FigurePostProcessor getSquarePostProcessor() {
-        return squarePostProcessor;
-    }
-    public FigurePostProcessor getMultiangleFigurePostProcessor() {
-        return multiangleFigurePostProcessor;
-    }
 
 }

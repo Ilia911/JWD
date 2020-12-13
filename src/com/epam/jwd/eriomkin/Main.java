@@ -1,10 +1,9 @@
 package com.epam.jwd.eriomkin;
 
 import com.epam.jwd.eriomkin.exception.FigureException;
-import com.epam.jwd.eriomkin.factory.ApplicationContext;
 import com.epam.jwd.eriomkin.factory.FigureFactory;
 import com.epam.jwd.eriomkin.factory.FigureType;
-import com.epam.jwd.eriomkin.factory.impl.ConcreteApplicationContext;
+import com.epam.jwd.eriomkin.factory.impl.ApplicationContext;
 import com.epam.jwd.eriomkin.model.Figure;
 import com.epam.jwd.eriomkin.model.Point;
 import org.apache.logging.log4j.Level;
@@ -19,10 +18,9 @@ public class Main {
 
         ElementArrCreator elementArrCreator = new ElementArrCreator();
 
-        Point[] newRandomArrPoint = elementArrCreator.createRandomArrPoint();
+        Point[] newRandomArrPoint = elementArrCreator.createRandomArrPoint(3);
 
-        final ApplicationContext applicationContext = new ConcreteApplicationContext();
-        FigureFactory figureFactory = applicationContext.createFigureFactory();
+        FigureFactory figureFactory = ApplicationContext.getFigureFactory();
 
         Figure figure;
 
@@ -34,6 +32,7 @@ public class Main {
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Array: {}. Result: {}", newRandomArrPoint, e.getMessage());
         }
+        //System.out.printf("Area of the triangle = %6.2f", FigureStorage.INSTANCE.getTriangleList().get(0).fetchArea());
 
     }
 

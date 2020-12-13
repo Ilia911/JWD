@@ -4,19 +4,19 @@ import com.epam.jwd.eriomkin.exception.FigureException;
 import com.epam.jwd.eriomkin.exception.FigureNotExistException;
 import com.epam.jwd.eriomkin.model.Figure;
 import com.epam.jwd.eriomkin.service.FigurePostProcessor;
-import com.epam.jwd.eriomkin.service.util.SquareValidator;
+import com.epam.jwd.eriomkin.service.util.MultiangleFigureValidator;
 
 import java.util.List;
 
-class SquareExistencePostProcessor implements FigurePostProcessor {
+class MultiAngleFigureExistencePostProcessor implements FigurePostProcessor {
 
-    private List<Figure> squareList = FigureStorage.INSTANCE.getSquareList();
+    private List<Figure> multiAngleList = FigureStorage.INSTANCE.getMultiAngleList();
 
-    SquareExistencePostProcessor() {}
+    MultiAngleFigureExistencePostProcessor() {}
 
     @Override
     public Figure process(Figure figure) throws FigureException {
-        if (SquareValidator.isFigureValid(figure)) {
+        if (MultiangleFigureValidator.isFigureValid(figure)) {
             figure = fetchOrSaveInList(figure);
         } else {
             throw new FigureNotExistException("Invalid data");
@@ -35,11 +35,11 @@ class SquareExistencePostProcessor implements FigurePostProcessor {
     }
 
     private void saveInList(Figure figure) {
-        squareList.add(figure);
+        multiAngleList.add(figure);
     }
 
     private Figure fetchFigure(Figure newFigure) {
-        for (Figure savedFigure : squareList) {
+        for (Figure savedFigure : multiAngleList) {
             if (savedFigure.equals(newFigure)) {
                 return savedFigure;
             }

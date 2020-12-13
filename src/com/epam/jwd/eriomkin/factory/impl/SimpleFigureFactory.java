@@ -11,7 +11,9 @@ import com.epam.jwd.eriomkin.model.Point;
 import com.epam.jwd.eriomkin.model.Square;
 import com.epam.jwd.eriomkin.model.Triangle;
 
-public class SimpleFigureFactory implements FigureFactory {
+public enum SimpleFigureFactory implements FigureFactory {
+    INSTANCE;
+
     @Override
     public Figure createFigure(FigureType type, Point... figureConstituents) throws FigureException {
         Figure figure;

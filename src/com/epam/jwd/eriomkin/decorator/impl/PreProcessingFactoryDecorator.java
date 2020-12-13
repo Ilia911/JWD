@@ -15,6 +15,7 @@ public class PreProcessingFactoryDecorator extends FigureFactoryDecorator {
     public PreProcessingFactoryDecorator(FigureFactory figureFactory) {
         this.figureFactory = figureFactory;
     }
+
     @Override
     public Figure createFigure(FigureType type, Point... figureConstituents) throws FigureException {
         serviceProvider.getPreProcessor().process(figureConstituents);
