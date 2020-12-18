@@ -1,5 +1,6 @@
 package com.epam.jwd.eriomkin.model;
 
+import com.epam.jwd.eriomkin.factory.FigureType;
 import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
 import com.epam.jwd.eriomkin.strategy.impl.TrianglePropertyStrategy;
 
@@ -8,13 +9,25 @@ import java.util.Arrays;
 public class Triangle extends Figure {
 
     private static final int NUMBER_OF_FIGURE_POINTS = 3;
+    private static long numberOfTriangles = 0;
+
+    private final long index = ++numberOfTriangles;
     private PropertyStrategy figurePropertiesStrategy = TrianglePropertyStrategy.getInstance();
+
+    {
+        figureType = FigureType.TRIANGLE;
+    }
 
     public Triangle(Point... arrPoint) {
         this.arrPoint = new Point[NUMBER_OF_FIGURE_POINTS];
         for (int i = 0; i < NUMBER_OF_FIGURE_POINTS && i < arrPoint.length; i++) {
             this.arrPoint[i] = arrPoint[i];
         }
+    }
+
+    @Override
+    public long getIndex() {
+        return index;
     }
 
     @Override

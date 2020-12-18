@@ -1,5 +1,6 @@
 package com.epam.jwd.eriomkin.model;
 
+import com.epam.jwd.eriomkin.factory.FigureType;
 import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
 import com.epam.jwd.eriomkin.strategy.impl.SquarePropertyStrategy;
 
@@ -8,7 +9,14 @@ import java.util.Arrays;
 public class Square extends Figure {
 
     private static final int NUMBER_OF_FIGURE_POINTS = 4;
+    private static long numberOfSquare = 0;
+
+    private final long index = ++numberOfSquare;
     private PropertyStrategy figurePropertyStrategy = SquarePropertyStrategy.INSTANCE;
+
+    {
+        figureType = FigureType.SQUARE;
+    }
 
     public Square(Point... arrPoint) {
         this.arrPoint = new Point[NUMBER_OF_FIGURE_POINTS];
@@ -63,6 +71,11 @@ public class Square extends Figure {
     @Override
     public Point[] getArrPoint() {
         return arrPoint;
+    }
+
+    @Override
+    public long getIndex() {
+        return 0;
     }
 
 }

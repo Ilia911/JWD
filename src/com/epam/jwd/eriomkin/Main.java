@@ -6,6 +6,7 @@ import com.epam.jwd.eriomkin.factory.FigureType;
 import com.epam.jwd.eriomkin.factory.impl.ApplicationContext;
 import com.epam.jwd.eriomkin.model.Figure;
 import com.epam.jwd.eriomkin.model.Point;
+import com.epam.jwd.eriomkin.service.impl.FigureSearchCriteria;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,7 +33,14 @@ public class Main {
         } catch (FigureException e) {
             LOGGER.log(Level.ERROR, "Array: {}. Result: {}", newRandomArrPoint, e.getMessage());
         }
-        //System.out.printf("Area of the triangle = %6.2f", FigureStorage.INSTANCE.getTriangleList().get(0).fetchArea());
+
+        FigureSearchCriteria criteria = FigureSearchCriteria.builder()
+                .setFigureType(FigureType.MULTI_ANGLE_FIGURE)
+                .setMinArea(2.6)
+                .setMaxArea(8.5)
+                .setNumberOfPoints(5)
+                .build();
+        System.out.println(criteria);
 
     }
 

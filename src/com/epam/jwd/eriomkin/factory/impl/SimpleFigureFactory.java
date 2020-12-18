@@ -1,7 +1,7 @@
 package com.epam.jwd.eriomkin.factory.impl;
 
 import com.epam.jwd.eriomkin.exception.FigureException;
-import com.epam.jwd.eriomkin.exception.IlligalFigureTypeException;
+import com.epam.jwd.eriomkin.exception.IllegalFigureTypeException;
 import com.epam.jwd.eriomkin.factory.FigureFactory;
 import com.epam.jwd.eriomkin.factory.FigureType;
 import com.epam.jwd.eriomkin.model.Figure;
@@ -32,7 +32,7 @@ public enum SimpleFigureFactory implements FigureFactory {
                 figure = new MultiAngleFigure(figureConstituents);
                 break;
             default:
-                throw new IlligalFigureTypeException("Illegal type of the figure!");
+                throw new IllegalFigureTypeException("Illegal type of the figure!");
         }
 
         return figure;

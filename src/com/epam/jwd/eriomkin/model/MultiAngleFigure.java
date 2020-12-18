@@ -1,5 +1,6 @@
 package com.epam.jwd.eriomkin.model;
 
+import com.epam.jwd.eriomkin.factory.FigureType;
 import com.epam.jwd.eriomkin.strategy.PropertyStrategy;
 import com.epam.jwd.eriomkin.strategy.impl.MultiFigurePropertyStrategy;
 
@@ -9,6 +10,13 @@ import java.util.Objects;
 public class MultiAngleFigure extends Figure {
 
     private PropertyStrategy figurePropertyStrategy = MultiFigurePropertyStrategy.INSTANCE;
+    private static long numberOfMultiAngleFigure = 0;
+
+    private final long index = ++numberOfMultiAngleFigure;
+
+    {
+        figureType = FigureType.MULTI_ANGLE_FIGURE;
+    }
 
     public MultiAngleFigure(Point... arrPoint) {
         this.arrPoint = arrPoint;
@@ -38,6 +46,11 @@ public class MultiAngleFigure extends Figure {
     @Override
     public Point[] getArrPoint() {
         return super.getArrPoint();
+    }
+
+    @Override
+    public long getIndex() {
+        return 0;
     }
 
     @Override

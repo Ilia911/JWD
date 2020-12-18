@@ -7,6 +7,10 @@ import java.util.List;
 
 enum FigureStorage {
     INSTANCE;
+    // Понимаю что надо бы создасть отдельное хранилище для каждого вида фигур,
+    // но т.к. все равно необходимо будет хранить фигуры в другом месте,
+    // то для учебных целей, думаю, такой вариант тоже пока подойдет
+
 
     private List<Figure> lineList = new ArrayList<>();
     private List<Figure> triangleList = new ArrayList<>();
