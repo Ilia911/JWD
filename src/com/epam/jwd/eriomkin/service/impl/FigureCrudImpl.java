@@ -14,6 +14,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FigureCrudImpl implements FigureCrud {
+
+    public static final FigureCrudImpl INSTANCE = new FigureCrudImpl();
+
+    private FigureCrudImpl() {}
+
     @Override
     public Figure create(FigureType type, Point... figureConstituents) throws FigureException {
 
@@ -79,9 +84,9 @@ public class FigureCrudImpl implements FigureCrud {
 
         return figureList.stream()
                 .filter(figure -> figure.fetchArea() >= criteria.getMinArea() 
-                        && figure.fetchArea() < criteria.getMaxArea())
+                        && figure.fetchArea() <= criteria.getMaxArea())
                 .filter(figure -> figure.fetchPerimeter() >= criteria.getMinPerimeter()
-                        && figure.fetchPerimeter() < criteria.getMaxPerimeter())
+                        && figure.fetchPerimeter() <= criteria.getMaxPerimeter())
                 .collect(Collectors.toList());
     }
 

@@ -4,7 +4,7 @@ import com.epam.jwd.eriomkin.model.Point;
 
 import java.util.Random;
 
-public class ElementArrCreator {
+public class IninialDataCreator {
 
     public Point[] hardcoreArrPoint() {
         Point[] arrPoint = new Point[6];
